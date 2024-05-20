@@ -8,4 +8,8 @@ sc.title("Breakout Game")
 
 paddle = Paddle()
 
+sc.listen()
+sc.onkey(paddle.move_r, "Right")
+sc.onkey(paddle.move_l, "Left")
+
 sc.exitonclick()
