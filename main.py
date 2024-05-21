@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from brick import Brick
 import time
 
 sc = Screen()
@@ -15,6 +16,12 @@ ball = Ball()
 sc.listen()
 sc.onkey(paddle.move_r, "Right")
 sc.onkey(paddle.move_l, "Left")
+
+brick_list = []
+for i in range(1, 56):
+    brick = Brick()
+    brick.next_brick_pos(i)
+    brick_list.append(brick)
 
 game_is_on = True
 while game_is_on:
