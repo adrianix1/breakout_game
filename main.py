@@ -22,4 +22,12 @@ while game_is_on:
     sc.update()
     ball.ball_moving()
 
+    # detect collision with top wall
+    if ball.ycor() > 280:
+        ball.bounce_y()
+
+    # detect collision with left and right wall
+    if ball.xcor() > 380 or ball.xcor() < -380:
+        ball.bounce_x()
+
 sc.exitonclick()
