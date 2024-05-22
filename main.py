@@ -2,6 +2,7 @@ from turtle import Screen
 from paddle import Paddle
 from ball import Ball
 from brick import Brick
+from scoreboard import Scoreboard
 import time
 
 sc = Screen()
@@ -12,6 +13,7 @@ sc.tracer(0)
 
 paddle = Paddle()
 ball = Ball()
+scoreboard = Scoreboard()
 
 sc.listen()
 sc.onkey(paddle.move_r, "Right")
@@ -45,12 +47,24 @@ while game_is_on:
     if ball.ycor() < -310:
         paddle.reset_paddle()
         ball.reset_ball()
+        if scoreboard.chances > 0:
+            scoreboard.take_chance()
+        else:
+            scoreboard.over()
+            game_is_on = False
 
     # detect collision with a brick
     for a in brick_list:
         if a.distance(ball) < 25:
             a.remove()
             brick_list.remove(a)
+            scoreboard.point()
             ball.bounce_y()
+            if scoreboard.score % 80:
+                ball.move_speed *= 0.9
+
+    if len(brick_list) == 0:
+        scoreboard.win()
+        game_is_on = False
 
 sc.exitonclick()
