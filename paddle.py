@@ -20,3 +20,6 @@ class Paddle(Turtle):
         x_cor = self.xcor()
         if x_cor >= -350:
             self.setx(x_cor - 20)
+
+    def reset_paddle(self):
+        self.goto(0, -250)

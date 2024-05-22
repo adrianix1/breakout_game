@@ -41,4 +41,9 @@ while game_is_on:
     if ball.distance(paddle) < 50 and ball.ycor() < -220:
         ball.bounce_y()
 
+    # detect paddle miss
+    if ball.ycor() < -310:
+        paddle.reset_paddle()
+        ball.reset_ball()
+
 sc.exitonclick()
