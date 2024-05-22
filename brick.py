@@ -24,3 +24,5 @@ class Brick(Turtle):
         brick_pos = (pos_x, pos_y)
         self.setpos(brick_pos)
 
+    def remove(self):
+        self.hideturtle()

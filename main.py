@@ -46,4 +46,11 @@ while game_is_on:
         paddle.reset_paddle()
         ball.reset_ball()
 
+    # detect collision with a brick
+    for a in brick_list:
+        if a.distance(ball) < 25:
+            a.remove()
+            brick_list.remove(a)
+            ball.bounce_y()
+
 sc.exitonclick()
